@@ -3,19 +3,20 @@ kind: Deployment
 metadata:
   name: prt-app-deployment
   labels:
-    app: prt-app
+    app: prt-web
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: prt-app
+      app: prt-web
   template:
     metadata:
       labels:
-        app: prt-app
+        app: prt-web
     spec:
       containers:
-      - name: prt-app-container
-        image: prt-cicd-app:latest   # Use your Docker image name/tag
+      - name: web-app
+        image: 281644/prt-web:latest   # Use your Docker image name/tag
+        imagePullPolicy: Always 
         ports:
         - containerPort: 80
